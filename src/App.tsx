@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Todos } from "./components/Todos"
-import { TodoId } from "./types"
+import { type TodoId, type Todo as TodoType } from "./types"
 
 const mockTodos = [
   {
@@ -28,11 +28,25 @@ const App = () => {
     setTodos(newTodos)
   }
 
+  const handleCompleted = ({ id, completed } : Pick<TodoType, 'id' | 'completed'>) => {
+    const newTodos = todos.map(todo => {
+      if(todo.id ===id) {
+        return {
+          ...todo,
+          completed // sera el completed que le pasamos por parametro
+        }
+      }
+      return todo
+    })
+    setTodos(newTodos)
+  }
+
   return (
     <div className="todoapp">
       <Todos
         todos={todos}
         onRemoveTodo={handleRemove}
+        onToggleCompleteTodo={handleCompleted}
       />
     </div>
   )
