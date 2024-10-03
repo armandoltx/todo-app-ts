@@ -23,9 +23,9 @@ const App = () => {
   const [todos, setTodos] = useState(mockTodos)
 
   return (
-    <>
+    <div className="todoapp">
       <Todos todos={todos} />
-    </>
+    </div>
   )
 }
 
