@@ -34,10 +34,23 @@ const App = () => {
 
   const handleCompleted = ({ id, completed } : Pick<TodoType, 'id' | 'completed'>) => {
     const newTodos = todos.map(todo => {
-      if(todo.id ===id) {
+      if(todo.id === id) {
         return {
           ...todo,
           completed // sera el completed que le pasamos por parametro
+        }
+      }
+      return todo
+    })
+    setTodos(newTodos)
+  }
+
+  const handleUpdateTitle = ({ id, title } :Pick<TodoType, 'id' | 'title'>) => {
+    const newTodos = todos.map(todo => {
+      if(todo.id === id) {
+        return {
+          ...todo,
+          title // el nuevo titulo
         }
       }
       return todo
@@ -80,6 +93,7 @@ const App = () => {
         todos={filteredTodos}
         onRemoveTodo={handleRemove}
         onToggleCompleteTodo={handleCompleted}
+        onTitlechange={handleUpdateTitle}
       />
       <Footer
         activeCount={activeCount}

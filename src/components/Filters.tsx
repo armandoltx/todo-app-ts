@@ -8,7 +8,7 @@ const FILTERS_BUTTONS = {
 } as const
 
 interface Props {
-  handleFilterChange: (filter: FilterValue) => void
+  onFilterChange: (filter: FilterValue) => void
   filterSelected: typeof TODO_FILTERS[keyof typeof TODO_FILTERS]
 }
 
